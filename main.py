@@ -1,12 +1,24 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import gdown
+import os
+import pickle
+
+# Only download if the file doesn't exist
+if not os.path.exists("similarity.pkl"):
+    print("Downloading similarity.pkl...")
+    gdown.download(id="1-bBKd7EjkYWcd0ZON3dqjm7tDjTyOYhV", output="similarity.pkl", quiet=False)
+
+# Now load the file
+with open("similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
 
 st.set_page_config(page_title="Anime Recommender", layout="centered")
 
 #  Data from mlmodel
 anime_df = pickle.load(open('animes.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+
 
 #  CSS
 st.markdown("""
