@@ -1,15 +1,12 @@
-import os
-import urllib.request
+import gdown
 
-file_url = "https://drive.google.com/uc?export=download&id=1-bBKd7EjkYWcd0ZON3dqjm7tDjTyOYhV"
-file_path = "similarity.pkl"
+url = "https://drive.google.com/uc?id=1-bBKd7EjkYWcd0ZON3dqjm7tDjTyOYhV"
+output = "similarity.pkl"
 
-if not os.path.exists(file_path):
-    print("Downloading similarity.pkl...")
-    urllib.request.urlretrieve(file_url, file_path)
-    print("Download complete.")
-else:
-    print("File already exists.")
+if not os.path.exists(output):
+    print("Downloading from Google Drive using gdown...")
+    gdown.download(url, output, quiet=False)
+
 
 import streamlit as st
 import pickle
