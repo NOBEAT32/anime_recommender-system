@@ -1,13 +1,3 @@
-import gdown
-
-url = "https://drive.google.com/uc?id=1-bBKd7EjkYWcd0ZON3dqjm7tDjTyOYhV"
-output = "similarity.pkl"
-
-if not os.path.exists(output):
-    print("Downloading from Google Drive using gdown...")
-    gdown.download(url, output, quiet=False)
-
-
 import streamlit as st
 import pickle
 import pandas as pd
@@ -58,7 +48,7 @@ st.markdown("""
 #  Title
 st.markdown('<div class="title"> Anime Recommender 🎌</div>', unsafe_allow_html=True)
 
-#  Recommend Function
+# 🔍 Recommend Function
 def recommend(anime_name):
     anime_index = anime_df[anime_df['title_english'] == anime_name].index[0]
     distances = similarity[anime_index]
